@@ -13,7 +13,11 @@ const app = Vue.createApp({
                 { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0,onSale: false  }
             ],
             selectedVariant:0,
-            cart: 0
+            cart: [
+                {id: 2234, value:0},
+                {id: 2235, value:0}
+            ],
+            premium:true
 
         }
     },
@@ -26,6 +30,17 @@ const app = Vue.createApp({
         },
         updateVariant(index) {
             this.selectedVariant=index;
+        },
+        updateCart(id){
+            if(id==2234){
+               this.cart[0].value+=1;
+            }else{
+                this.cart[1].value+=1;
+            }
+        },
+        removeCart(){
+            this.cart.splice(0,1,{id:2234, value:0});
+            this.cart.splice(1,1,{id:2235, value:0});
         }
         
     },

@@ -14,9 +14,9 @@
     <div id="app">
         <div class="nav-bar"></div>
 
-        <div class="cart">Cart({{ cart }})</div>
+        <div class="cart">Cart( {{ cart[0].id + ' (' + cart[0].value +') , '+ cart[1].id +' (' +cart[1].value +')' }} )</div>
 
-        <div class="product-display">
+        <!-- <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
                     <img :src="image" :class="{ 'out-of-stock-img': !inStock }">
@@ -42,11 +42,18 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
+       <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeCart"></product-display>
+
     </div>
 
     <!-- Import Js -->
     <script src="./main.js "></script>
+     <!-- Import Components -->
+     <script src="./components/ProductDisplay.js"></script>
+     <script src="./components/ProductDetails.js"></script>
+     <script src="./components/ReviewForm.js"></script>
+     <script src="./components/ReviewList.js"></script>
     <script>
         const mountedApp = app.mount('#app')
     </script>
